@@ -1,0 +1,12 @@
+node_modules
+dist
+build
+coverage
+.vscode
+.idea
+.DS_Store
+.env
+*.log
+/k8s
+.gitignore
+*.md  

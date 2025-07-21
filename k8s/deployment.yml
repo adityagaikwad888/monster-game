@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: monster-game-deployment
+  namespace: monster-game-ns
+  labels:
+    app: monster-game
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: monster-game-pod
+  template:
+    metadata:
+      name: monster-game-pod
+      namespace: monster-game-ns
+      labels:
+        app: monster-game-pod
+
+    spec:
+      containers:
+      - name: monster-game-container
+        image: adityagaikwad888/monster-game:latest
+        ports:
+        - containerPort: 80
