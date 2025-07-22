@@ -7,9 +7,9 @@ metadata:
 
 spec:
   selector:
-    app: monster-game-pod # This should match the pod label
+    app: monster-game-pod-label # This should match the pod label
   ports:
   - protocol: TCP
-    port: 8000
+    port: 80
     targetPort: 80
   type: ClusterIP # or loadBalancer if you want external access

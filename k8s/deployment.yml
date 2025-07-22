@@ -5,23 +5,34 @@ metadata:
   name: monster-game-deployment
   namespace: monster-game-ns
   labels:
-    app: monster-game
+    app: monster-game-deployment-label
 
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: monster-game-pod
+      app: monster-game-pod-label
   template:
     metadata:
       name: monster-game-pod
-      namespace: monster-game-ns
       labels:
-        app: monster-game-pod
-
+        app: monster-game-pod-label
     spec:
       containers:
       - name: monster-game-container
-        image: adityagaikwad888/monster-game:latest
+        image: adityagaikwad888/monster-game
         ports:
         - containerPort: 80
+        env:
+        - name: PORT # variable name actually used in container as env var
+          valueFrom:
+            secretKeyRef:
+              name: monster-game-secrets
+              key: PORT
+        resources:
+          requests:
+            cpu: 50m # 50m = 0.5% cpu
+            memory: 128Mi # 128 MB 
+          limits:
+            cpu: 150m
+            memory: 256Mi
