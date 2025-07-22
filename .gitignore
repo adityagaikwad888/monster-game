@@ -22,4 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-/k8s/secret.*
+/k8s/secrets.*
+.env
